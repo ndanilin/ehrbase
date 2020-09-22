@@ -28,10 +28,6 @@
 
     <artifactId>rest-ehr-scape</artifactId>
     <dependencies>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-web</artifactId>
-        </dependency>
 
         <dependency>
             <groupId>org.ehrbase.openehr</groupId>
