@@ -1503,7 +1503,7 @@ commands:
                         -e POSTGRES_USER=$POSTGRES_USER \
                         -e POSTGRES_PASSWORD=$POSTGRES_PASSWORD -d \
                         -e DISABLE_SECURITY=true \
-                        -p 5432:5432 ehrbase/ehrbase-postgres:11.10
+                        -p 5432:5432 ehrbase/ehrbase-postgres:experimental
 
 
   setup-file-repo:
@@ -1840,7 +1840,7 @@ executors:
         auth:
           username: $DOCKER_USER
           password: $DOCKER_HUB_PASSWORD
-      - image: ehrbase/ehrbase-postgres:11.10
+      - image: ehrbase/ehrbase-postgres:experimental
         auth:
           username: $DOCKER_USER
           password: $DOCKER_HUB_PASSWORD
