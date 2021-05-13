@@ -24,7 +24,7 @@ Force Tags    refactor
 
 *** Test Cases ***
 Alternative flow 2: update directory on non-existing EHR
-    [Tags]              
+    [Tags]
 
     create fake EHR
     update DIRECTORY - fake ehr_id (JSON)    update/2_add_subfolders.json

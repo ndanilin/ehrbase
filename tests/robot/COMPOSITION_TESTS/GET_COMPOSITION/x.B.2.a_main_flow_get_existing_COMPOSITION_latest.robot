@@ -27,7 +27,7 @@ Force Tags
 
 *** Test Cases ***
 Main flow get existing COMPOSITION latest
-    [Tags]     
+    [Tags]
 
     upload OPT      minimal/minimal_observation.opt
 

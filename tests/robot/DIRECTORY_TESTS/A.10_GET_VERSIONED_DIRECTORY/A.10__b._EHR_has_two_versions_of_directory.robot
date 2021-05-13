@@ -25,6 +25,7 @@ Force Tags
 
 *** Test Cases ***
 Alternative flow 1: get versioned directory from existent EHR that has two versions of directory
+    [Tags]
 
     create EHR
     create DIRECTORY (JSON)    empty_directory.json

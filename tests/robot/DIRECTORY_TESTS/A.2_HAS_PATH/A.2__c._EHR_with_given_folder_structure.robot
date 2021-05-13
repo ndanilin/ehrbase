@@ -37,24 +37,32 @@ Force Tags    refactor
 
 *** Test Cases ***
 DS-01 - has path on EHR with given folder structure
+
     [Tags]
+
     get FOLDER in DIRECTORY at version (JSON)    /
     validate GET-@version response - 200 retrieved    root
 
 
 DS-02 - has path on EHR with given folder structure
+
     [Tags]
+
     get FOLDER in DIRECTORY at version (JSON)    /emergency
     validate GET-@version response - 200 retrieved    emergency
 
 
 DS-03 - has path on EHR with given folder structure
+
     [Tags]
+
     get FOLDER in DIRECTORY at version (JSON)    /emergency/episode_x
     validate GET-@version response - 200 retrieved    episode_x
 
 
 DS-04 - has path on EHR with given folder structure
+
+    [Tags]
 
     get FOLDER in DIRECTORY at version (JSON)    /emergency/episode_x/summary_compo_x
     validate GET-@version response - 200 retrieved    summary_compo_x
@@ -62,11 +70,15 @@ DS-04 - has path on EHR with given folder structure
 
 DS-05 - has path on EHR with given folder structure
 
+    [Tags]
+
     get FOLDER in DIRECTORY at version (JSON)    /emergency/episode_y
     validate GET-@version response - 200 retrieved    episode_y
 
 
 DS-06 - has path on EHR with given folder structure
+
+    [Tags]
 
     get FOLDER in DIRECTORY at version (JSON)    /emergency/episode_y/summary_compo_y
     validate GET-@version response - 200 retrieved    summary_compo_y
@@ -74,15 +86,18 @@ DS-06 - has path on EHR with given folder structure
 
 DS-07 - has path on EHR with given folder structure
 
+    [Tags]
+
     get FOLDER in DIRECTORY at version (JSON)    /hospitalization
     validate GET-@version response - 200 retrieved    hospitalization
 
 
 DS-08 - has path on EHR with given folder structure
 
+    [Tags]
+
     get FOLDER in DIRECTORY at version (JSON)    /hospitalization/summary_compo_z
     validate GET-@version response - 200 retrieved    summary_compo_z
-
 
 DS-09 - retrieving non-existing (random) path
     [Tags]

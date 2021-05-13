@@ -25,6 +25,8 @@ Force Tags
 *** Test Cases ***
 Alternative flow 1: has directory on existing EHR with directory
 
+    [Tags]
+
     create EHR
 
     create DIRECTORY (JSON)    subfolders_in_directory.json

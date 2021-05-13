@@ -64,6 +64,7 @@ Force Tags      COMPOSITION_get_versioned
 
 
 3. Get Versioned Composition Of Non-Existing EHR (JSON)
+    [Tags]
 
     prepare new request session    JSON    Prefer=return=representation
 
@@ -76,6 +77,7 @@ Force Tags      COMPOSITION_get_versioned
 
 
 4. Get Versioned Composition Of Invalid EHR_ID (JSON)
+    [Tags]
 
     prepare new request session    JSON    Prefer=return=representation
 
@@ -87,8 +89,8 @@ Force Tags      COMPOSITION_get_versioned
     Should Be Equal As Strings    ${response.status}    404
 
 
-
 5. Get Versioned Composition Of Non-Existing Composition (JSON)
+    [Tags]
 
     prepare new request session    JSON    Prefer=return=representation
 
@@ -101,6 +103,7 @@ Force Tags      COMPOSITION_get_versioned
 
 
 6. Get Versioned Composition Of Invalid Composition ID (JSON)
+    [Tags]
 
     prepare new request session    JSON    Prefer=return=representation
 

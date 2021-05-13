@@ -24,6 +24,7 @@ Force Tags    refactor
 
 *** Test Cases ***
 Alternative flow 2: has directory from non existent EHR
+    [Tags]
 
     create fake EHR
 

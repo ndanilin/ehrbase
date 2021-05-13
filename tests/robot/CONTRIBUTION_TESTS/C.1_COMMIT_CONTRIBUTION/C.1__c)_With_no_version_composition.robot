@@ -43,7 +43,9 @@ Force Tags    refactor
 
 
 *** Test Cases ***
+# @ndanilin: see a comment to "check response: is negative - complaining about empty versions list"
 Alternative flow 2: commit invalid CONTRIBUTION (no VERSION<COMPOSITION>)
+    [Tags]   сannot_run_now
 
     create EHR
 

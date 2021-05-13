@@ -35,7 +35,7 @@ Documentation   OPT1.4 integration tests
 ...                 For each valid OPT in the data set, invoke the OPT validation service
 ...                 The result should be positive and the server's response should be related to "OPT is valid".
 Metadata        TOP_TEST_SUITE    EHR_STATUS
-Resource        ${CURDIR}${/}../_resources/suite_settings.robot
+Resource        ${EXECDIR}${/}robot/_resources/suite_settings.robot
 
 # Suite Setup  startup OPT SUT
 Suite Teardown  Delete All Templates
@@ -48,6 +48,7 @@ Force Tags   OPT14    OPT14_validate    future
 
 All Types
     [Documentation]    TODO: description from business perspective
+    [Tags]
     [Template]         validate valid OPT
 
     all_types/Test_all_types.opt
@@ -55,6 +56,7 @@ All Types
 
 Minimal
     [Documentation]    ...
+    [Tags]
     [Template]         validate valid OPT
 
     minimal/minimal_action.opt
@@ -66,6 +68,7 @@ Minimal
 
 Minimal Entry Combination
     [Documentation]    ...
+    [Tags]
     [Template]         validate valid OPT
 
     minimal_entry_combination/obs_act.opt
@@ -76,6 +79,7 @@ Minimal Entry Combination
 
 Minimal Persistent
     [Documentation]    ...
+    [Tags]
     [Template]         validate valid OPT
 
     minimal_persistent/persistent_minimal_all_entries.opt
@@ -85,6 +89,7 @@ Minimal Persistent
 
 Nested
     [Documentation]    ...
+    [Tags]
     [Template]         validate valid OPT
 
     nested/nested.opt
@@ -92,6 +97,7 @@ Nested
 
 Versioned
     [Documentation]    ...
+    [Tags]
     [Template]         validate valid OPT
 
     versioned/Test versioned v1.opt
@@ -101,6 +107,7 @@ Versioned
 Removed Optional Elements
     [Documentation]    Issues with optional elements.
     ...                Server should accept OPTs with missing optinal elements as vaild.
+    [Tags]
     [Template]         validate valid OPT
 
     removed_optional_elements/minimal_action_removed_language.opt

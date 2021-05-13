@@ -24,6 +24,7 @@ Force Tags
 
 *** Test Cases ***
 Alternative flow 2: get versioned directory from non-existent EHR
+    [Tags]
 
     create fake EHR
 

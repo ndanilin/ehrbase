@@ -31,12 +31,15 @@ Force Tags
 *** Test Cases ***
 Alternative flow 1: has path on EHR with just root directory (DS 1)
 
+    [Tags]
+
     get FOLDER in DIRECTORY at version (JSON)    /
     validate GET-@version response - 200 retrieved    root
 
 
-
 Alternative flow 1: has path on EHR with just root directory (DS 2)
+
+    [Tags]
 
     generate random path
     get FOLDER in DIRECTORY at version (JSON)    ${path}

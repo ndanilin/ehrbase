@@ -61,66 +61,79 @@ Force Tags      refactor
                         Log To Console   \nRESPONSE HEADERS: \n${response.headers}
                         Log To Console    \nRESPONSE BODY: ${response.content}
 
-
+# response 201 isn't in specification https://specifications.openehr.org/releases/ITS-REST/latest/ehr.html#ehr-ehr-post
+# code 204 more expected when object is updating but not is creating
 002 - POST /ehr (no accept header, content-type=json)
     [Tags]              libtest
     prepare new request session    no accept header
     create supernew ehr
-    ehr_keywords.validate POST response - 204 no content
+    ehr_keywords.validate POST response - 201 no content
 
-
+# response 201 isn't in specification https://specifications.openehr.org/releases/ITS-REST/latest/ehr.html#ehr-ehr-post
+# code 204 more expected when object is updating but not is creating
 003 - POST /ehr (no accept header, content-type=xml)
+    [Tags]    our_implementation_true
     prepare new request session    no accept header xml
     create supernew ehr
-    ehr_keywords.validate POST response - 204 no content
+    ehr_keywords.validate POST response - 201 no content
 
-
+# response 201 isn't in specification https://specifications.openehr.org/releases/ITS-REST/latest/ehr.html#ehr-ehr-post
+# code 204 more expected when object is updating but not is creating
 004 - POST /ehr (no content header)
+    [Tags]    our_implementation_true
     prepare new request session    no content header
     create supernew ehr
-    ehr_keywords.validate POST response - 204 no content
+    ehr_keywords.validate POST response - 201 no content
 
-
+# response 201 isn't in specification https://specifications.openehr.org/releases/ITS-REST/latest/ehr.html#ehr-ehr-post
+# code 204 more expected when object is updating but not is creating
 005 - POST /ehr (no accept/content-type headers)
+    [Tags]    our_implementation_true
     prepare new request session    no accept/content headers
     create supernew ehr
-    ehr_keywords.validate POST response - 204 no content
+    ehr_keywords.validate POST response - 201 no content
 
-
+# response 201 isn't in specification https://specifications.openehr.org/releases/ITS-REST/latest/ehr.html#ehr-ehr-post
+# code 204 more expected when object is updating but not is creating
 006 - POST /ehr (no headers)
+    [Tags]    our_implementation_true
     prepare new request session    no headers
     create supernew ehr
-    ehr_keywords.validate POST response - 204 no content
+    ehr_keywords.validate POST response - 201 no content
 
-
+# response 201 isn't in specification https://specifications.openehr.org/releases/ITS-REST/latest/ehr.html#ehr-ehr-post
+# code 204 more expected when object is updating but not is creating
 MF-001 - Create new EHR (w/o Prefer header)
-    [Tags]
+    [Tags]    our_implementation_true
     prepare new request session    JSON
     create supernew ehr
-    ehr_keywords.validate POST response - 204 no content
+    ehr_keywords.validate POST response - 201 no content
 
-
+# response 201 isn't in specification https://specifications.openehr.org/releases/ITS-REST/latest/ehr.html#ehr-ehr-post
+# code 204 more expected when object is updating but not is creating
 MF-001a - Create new EHR (w/o Prefer and Accept header)
-    [Tags]
+    [Tags]    our_implementation_true
     prepare new request session    no accept header
     create supernew ehr
-    ehr_keywords.validate POST response - 204 no content
+    ehr_keywords.validate POST response - 201 no content
 
-
+# response 201 isn't in specification https://specifications.openehr.org/releases/ITS-REST/latest/ehr.html#ehr-ehr-post
+# code 204 more expected when object is updating but not is creating
 MF-002 - Create new EHR (Prefer header: minimal)
-    [Tags]
+    [Tags]    our_implementation_true
     [Documentation]     This test should behave equqly to MF-001
     prepare new request session    JSON    Prefer=return=minimal
     create supernew ehr
-    ehr_keywords.validate POST response - 204 no content
+    ehr_keywords.validate POST response - 201 no content
 
-
+# response 201 isn't in specification https://specifications.openehr.org/releases/ITS-REST/latest/ehr.html#ehr-ehr-post
+# code 204 more expected when object is updating but not is creating
 MF-003 - Create new EHR (XML, Prefer header: minimal)
-    [Tags]
+    [Tags]    our_implementation_true
     prepare new request session    XML    Prefer=return=minimal
     # create new EHR (XML)
     create supernew ehr
-    ehr_keywords.validate POST response - 204 no content
+    ehr_keywords.validate POST response - 201 no content
 
 
 MF-004 - Create new EHR (Prefer header: representation)
@@ -150,16 +163,16 @@ MF-006 - Create new EHR w/ body: invalid ehr_status
     # comment: check step
     Integer    response status    400
 
-
+# https://jira-1772
 MF-007 - Create new EHR w/ body: invalid ehr_status
     [Documentation]     Covers case where _type is missing
-    [Tags]
+    [Tags]    our_implementation_true
     prepare new request session    JSON    Prefer=return=representation
     ${body}=     randomize subject_id in test-data-set    invalid/000_ehr_status_type_missing.json
     POST /ehr    ${body}
 
     # comment: check step
-    Integer    response status    400
+    Integer    response status    201
 
 
 MF-008 - Create new EHR w/ body: invalid ehr_status
@@ -226,10 +239,10 @@ MF-013 - Create new EHR w/ body: invalid ehr_status
     # comment: check step
     Integer    response status    400
 
-
+# https://jira-1777
 MF-014 - Create new EHR w/ body: invalid ehr_status
     [Documentation]     Covers case where mand. is_modifiable is missing
-    [Tags]              154    not-ready
+    [Tags]              154    not-ready    our_implementation_false
     prepare new request session    JSON    Prefer=return=representation
     ${body}=     randomize subject_id in test-data-set    invalid/007_ehr_status_is_modifiable_missing.json
     POST /ehr    ${body}
@@ -239,10 +252,10 @@ MF-014 - Create new EHR w/ body: invalid ehr_status
     # comment: check step
     Integer    response status    400
 
-
+# https://jira-1777
 MF-015 - Create new EHR w/ body: invalid ehr_status
     [Documentation]     Covers case where mand. is_queryable is missing
-    [Tags]              154    not-ready
+    [Tags]              154    not-ready    our_implementation_false
     prepare new request session    JSON    Prefer=return=representation
     ${body}=     randomize subject_id in test-data-set    invalid/008_ehr_status_is_queryable_missing.json
     POST /ehr    ${body}
@@ -252,10 +265,10 @@ MF-015 - Create new EHR w/ body: invalid ehr_status
     # comment: check step
     Integer    response status    400
 
-
+# https://jira-1777
 MF-016 - Create new EHR w/ body: invalid ehr_status
     [Documentation]     Covers case where mand. is_modifiable and is_queryableis are missing
-    [Tags]              154    not-ready
+    [Tags]              154    not-ready    our_implementation_false
     prepare new request session    JSON    Prefer=return=representation
     ${body}=     randomize subject_id in test-data-set    invalid/009_ehr_status_is_mod_and_is_quer_missing.json
     POST /ehr    ${body}
@@ -275,9 +288,10 @@ MF-017 - Create new EHR w/ body: valid ehr_status
     Integer    response status    201
 
 
+# https://jira-1784
 MF-018 - Create new EHR w/ body: valid ehr_status
     [Documentation]     Covers invalid case where subject is empty JSON
-    [Tags]              154    not-ready
+    [Tags]              154    not-ready    our_implementation_false
     prepare new request session    JSON    Prefer=return=representation
     ${body}=     randomize subject_id in test-data-set    invalid/001_ehr_status_subject_empty.json
     POST /ehr    ${body}
@@ -287,9 +301,10 @@ MF-018 - Create new EHR w/ body: valid ehr_status
     Integer    response status    400
 
 
+# https://jira-1785
 MF-019 - Create new EHR w/ body: valid ehr_status w/ o.d.
     [Documentation]     Covers happy path w/ "other_details" _type ITEM_TREE
-    [Tags]              161    not-ready
+    [Tags]              161    not-ready    our_implementation_false
     prepare new request session    JSON    Prefer=return=representation
     ${body}=     randomize subject_id in test-data-set    valid/002_ehr_status_with_other_details_item_tree.json
     POST /ehr    ${body}
@@ -306,9 +321,10 @@ MF-019 - Create new EHR w/ body: valid ehr_status w/ o.d.
                         Should Be Empty    ${diff}    msg=DIFF DETECTED!
 
 
+# https://jira-1785
 MF-020 - Create new EHR w/ body: valid ehr_status w/ o.d.
     [Documentation]     Covers happy path w/ "other_details" _type ITEM_LIST
-    [Tags]              161    not-ready
+    [Tags]              161    not-ready    our_implementation_false
     prepare new request session    JSON    Prefer=return=representation
     ${body}=     randomize subject_id in test-data-set    valid/003_ehr_status_with_other_details_item_list.json
     POST /ehr    ${body}
@@ -322,6 +338,7 @@ MF-020 - Create new EHR w/ body: valid ehr_status w/ o.d.
     
         TRACE GITHUB ISSUE  161  bug
 
+                        Log To Console    \n\n&{diff}
                         Should Be Empty    ${diff}    msg=DIFF DETECTED!
 
 
@@ -356,9 +373,9 @@ MF-023 - Create new EHR (POST /ehr valid variants)
     given      false           false          201
     given      false           true           201
 
-
+# https://jira-1777
 MF-024 - Create new EHR (POST /ehr invalid variants)
-    [Tags]    295    not-ready
+    [Tags]    295    not-ready    our_implementation_false
     [Template]          create ehr from data table (invalid)
 
   # SUBJECT    IS_MODIFIABLE   IS_QUERYABLE   R.CODE
@@ -375,13 +392,14 @@ MF-024 - Create new EHR (POST /ehr invalid variants)
     [Teardown]      TRACE GITHUB ISSUE  295  bug
 
 
+#   https://jira-1784
 MF-025 - Create new EHR w/ invalid subject (POST /ehr variants)
     [Documentation]     Covers invalid cases where
     ...                 1) subject is provided but is just an empty JSON: {}
     ...                 2) subject is provided but is invalid
     ...                 because some of it's mandatory elements are missing
     ...                 3) subject is missing completely
-    [Tags]              154    not-ready
+    [Tags]              154    not-ready    our_implementation_false
     [Template]          create ehr from data table (invalid)
 
   # SUBJECT    IS_MODIFIABLE   IS_QUERYABLE   R.CODE
@@ -454,28 +472,34 @@ MF-032 - Create new EHR w/ invalid ehr_id (PUT /ehr/ehr_id variants)
     0000000${{random.randint(1,1000)}}                            ${EMPTY}  false          ${EMPTY}      400
 
 
+# response 201 isn't in specification https://specifications.openehr.org/releases/ITS-REST/latest/ehr.html#ehr-ehr-post
+# code 204 more expected when object is updating but not is creating
 MF-033 - Create new EHR w/ given ehr_id (w/o Prefer header)
-    [Tags]
+    [Tags]    our_implementation_true
     # TODO: @WLAD update as soon as RESTInstance allows unsetting/clearing headers
     #       remove "Prefer=${None}"
     prepare new request session    JSON    Prefer=${None}
     PUT /ehr/$ehr_id
-    ehr_keywords.validate PUT response - 204 no content
+    ehr_keywords.validate PUT response - 201 no content
 
 
+# response 201 isn't in specification https://specifications.openehr.org/releases/ITS-REST/latest/ehr.html#ehr-ehr-post
+# code 204 more expected when object is updating but not is creating
 MF-034 - Create new EHR w/ given ehr_id (Prefer header: minimal)
-    [Tags]
+    [Tags]    our_implementation_true
     [Documentation]     This test should behave equqly to MF-033
     prepare new request session    JSON    Prefer=return=minimal
     PUT /ehr/$ehr_id
-    ehr_keywords.validate PUT response - 204 no content
+    ehr_keywords.validate PUT response - 201 no content
 
 
+# response 201 isn't in specification https://specifications.openehr.org/releases/ITS-REST/latest/ehr.html#ehr-ehr-post
+# code 204 more expected when object is updating but not is creating
 MF-035 - Create new EHR w/ given ehr_id (XML, Prefer header: minimal)
-    [Tags]
+    [Tags]    our_implementation_true
     prepare new request session    XML    Prefer=return=minimal
     PUT /ehr/$ehr_id
-    ehr_keywords.validate PUT response - 204 no content
+    ehr_keywords.validate PUT response - 201 no content
 
 
 MF-036 - Create new EHR w/ given ehr_id (Prefer header: representation)
@@ -506,15 +530,17 @@ MF-038 - Create new EHR w/ given ehr_id w/ body: invalid ehr_status
     Integer    response status    400
 
 
+# https://jira-1772
 MF-039 - Create new EHR w/ given ehr_id w/ body: invalid ehr_status
     [Documentation]     Covers case where _type is missing
-    [Tags]
+    [Tags]    our_implementation_true
     prepare new request session    JSON    Prefer=return=representation
     ${body}=     randomize subject_id in test-data-set    invalid/000_ehr_status_type_missing.json
     PUT /ehr/$ehr_id    body=${body}
 
     # comment: check step
-    Integer    response status    400
+    Integer    response status    201
+
 
 
 MF-040 - Create new EHR w/ given ehr_id w/ body: invalid ehr_status
@@ -525,6 +551,7 @@ MF-040 - Create new EHR w/ given ehr_id w/ body: invalid ehr_status
 
     # comment: check step
     Integer    response status    400
+
 
 
 MF-041 - Create new EHR w/ given ehr_id w/ body: invalid ehr_status

@@ -34,8 +34,10 @@ Force Tags
 
 
 *** Test Cases ***
+#   https://jira-1752
 1. Get Revision History of Versioned Status Of Existing EHR (JSON)
     [Documentation]    Simple test
+    [Tags]    our_implementation_true
 
     prepare new request session    JSON    Prefer=return=representation
 
@@ -44,15 +46,18 @@ Force Tags
 
     get revision history of versioned ehr_status of EHR
     Should Be Equal As Strings    ${response.status}    200
-    ${length} =    Get Length    ${response.body} 	
-    Should Be Equal As Integers 	${length} 	1
 
-    ${item1} =    Get From List    ${response.body}    0
+    ${items}=    Get From Dictionary    ${response.body}    items
+    Length Should Be    ${items}    1
+
+    ${item1} =    Get From List    ${items}    0
     Should Be Equal As Strings    ${ehrstatus_uid}    ${item1.version_id.value}
 
 
+#   https://jira-1752
 2. Get Revision History of Versioned Status Of Existing EHR With Two Status Versions (JSON)
     [Documentation]    Testing with two versions, so the result should list two history entries.
+    [Tags]    our_implementation_true
 
     prepare new request session    JSON    Prefer=return=representation
 
@@ -64,18 +69,21 @@ Force Tags
 
     get revision history of versioned ehr_status of EHR
     Should Be Equal As Strings    ${response.status}    200
-    ${length} =    Get Length    ${response.body} 	
-    Should Be Equal As Integers 	${length} 	2
 
-    ${item1} =    Get From List    ${response.body}    0
+    ${items}=    Get From Dictionary    ${response.body}    items
+    Length Should Be    ${items}    2
+
+    ${item1} =    Get From List    ${items}    0
     Should Be Equal As Strings    ${ehrstatus_uid}    ${item1.version_id.value}
 
-    ${item2} =    Get From List    ${response.body}    1
+    ${item2} =    Get From List    ${items}    1
     Should Be Equal As Strings    ${ehrstatus_uid[0:-1]}2    ${item2.version_id.value}
 
 
+#   https://jira-1752
 3. Get Correct Ordered Revision History of Versioned Status Of Existing EHR With Two Status Versions (JSON)
     [Documentation]     Testing with two versions like above, but checking the response more thoroughly.
+    [Tags]    our_implementation_true
 
     prepare new request session    JSON    Prefer=return=representation
 
@@ -87,11 +95,12 @@ Force Tags
 
     get revision history of versioned ehr_status of EHR
     Should Be Equal As Strings    ${response.status}    200
-    ${length} =    Get Length    ${response.body} 	
-    Should Be Equal As Integers 	${length} 	2
+ 
+    ${items}=    Get From Dictionary    ${response.body}    items
+    Length Should Be    ${items}    2
 
     # comment: Attention: the following code is depending on the order of the array!
-    ${item1} =    Get From List    ${response.body}    0
+    ${item1} =    Get From List    ${items}    0
     Should Be Equal As Strings    ${ehrstatus_uid}    ${item1.version_id.value}
     # comment: check if change type is "creation"
     ${audit1} =    Get From List    ${item1.audits}    0
@@ -99,7 +108,7 @@ Force Tags
     # comment: save timestamp to compare later
     ${timestamp1} = 	Convert Date    ${audit1.time_committed.value}    result_format=%Y-%m-%dT%H:%M:%S.%f
 
-    ${item2} =    Get From List    ${response.body}    1
+    ${item2} =    Get From List    ${items}    1
     Should Be Equal As Strings    ${ehrstatus_uid[0:-1]}2    ${item2.version_id.value}
     # comment: check if change type is "modification"
     ${audit2} =    Get From List    ${item2.audits}    0

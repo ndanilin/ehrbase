@@ -27,6 +27,7 @@ Force Tags
 
 *** Test Cases ***
 Main flow create new event COMPOSITION
+    [Tags]
 
     upload OPT    nested/nested.opt
 

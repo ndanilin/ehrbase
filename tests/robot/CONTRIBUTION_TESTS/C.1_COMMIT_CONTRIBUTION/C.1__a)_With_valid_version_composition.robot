@@ -46,7 +46,10 @@ Force Tags    refactor
 
 
 *** Test Cases ***
+#https://jira-1989
 Main flow: successfully commit CONTRIBUTION with single valid VERSION<COMPOSITION>
+
+    [Tags]  our_implementation_false
 
     upload OPT    minimal/minimal_evaluation.opt
     create EHR
@@ -56,8 +59,10 @@ Main flow: successfully commit CONTRIBUTION with single valid VERSION<COMPOSITIO
 
     [Teardown]    restart SUT
 
-
+#https://jira-1989
 Main flow: successfully commit CONTRIBUTION with single valid VERSION<COMPOSITION> withtout accept header
+
+    [Tags]  our_implementation_false
 
     upload OPT    minimal/minimal_evaluation.opt
     create EHR

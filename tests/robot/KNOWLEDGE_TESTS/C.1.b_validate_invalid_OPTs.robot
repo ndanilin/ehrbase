@@ -49,12 +49,12 @@ Force Tags   OPT14    OPT14_validate    future
 
 Empty File
     [Documentation]    Different issues with the file content.
+    [Tags]
     [Template]         validate invalid OPT
 
     empty_file/empty_file.opt
     empty_file/empty_xml.opt
     empty_file/empty_xml_template.opt
-
 
 Empty Template ID
     [Documentation]    Different issues with template_id.
@@ -69,6 +69,7 @@ Empty Template ID
     ...                    <template_id>bullfrog</template_id>
     ...                invalid_4:
     ...                    no template_id tag at all
+    [Tags]  our_implementation_false
     [Template]         validate invalid OPT
 
     removed_template_id/minimal_admin_invalid_1.opt
@@ -79,10 +80,12 @@ Empty Template ID
     [Teardown]  TRACE GITHUB ISSUE  119  bug
 
 
+#https://jira-1849
 Removed Mandatory Elements
     [Documentation]    Issues with missing elements.
     ...                Mandatory, optional or combination of it.
     ...                Elements without minOccurs or MaxOccurs are mandatory
+    [Tags]  our_implementation_false
     [Template]         validate invalid OPT
 
     removed_mandatory_elements/minimal_action_removed_concept.opt

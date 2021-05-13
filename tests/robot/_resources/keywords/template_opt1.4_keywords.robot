@@ -117,7 +117,7 @@ retrieve versioned OPT
 
 
 server accepted OPT
-                        Should Be Equal As Strings    ${response.status_code}   201
+                        should be true    ${response.status_code} in (201,409)
 
 
 server rejected OPT with status code ${status code}

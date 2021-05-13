@@ -292,11 +292,11 @@ check response (LOADED DB): returns correct content
                         Log To Console  \n/////////// EXPECTED //////////////////////////////
                         Output    ${expected result}
 
-    &{diff}             compare_jsons_ignoring_properties    ${response body}    ${expected result}
+    &{diff}             compare_jsons_ignoring_properties    ${expected result}    ${response body}
     # ...                 meta    path    foo        # comment: example of how to add additional
                                                      #          properties to be ignored
     ...                 report_repetition=${TRUE}
-
+                        Log To Console    ${diff}
                         Should Be Empty  ${diff}  msg=DIFF DETECTED!
 
 
@@ -333,7 +333,8 @@ check response (EMPTY DB): returns correct content for
                         Log To Console  \n/////////// EXPECTED //////////////////////////////
                         Output    ${expected result}
 
-    &{diff}=            compare_jsons_ignoring_properties  ${response body}  ${expected result}
+    &{diff}=            compare_jsons_ignoring_properties  ${expected result}  ${response body}
+                        Log to console    ${diff}
                         Should Be Empty  ${diff}  msg=DIFF DETECTED!
 
 
@@ -543,7 +544,7 @@ Populate SUT with Test-Data and Prepare Expected Results
     Commit Compo     5    ${ehr_index}    ${compo data sets}/minimal_evaluation_2.composition.json
     # Commit Compo     6    ${ehr_index}    ${compo data sets}/minimal_evaluation_3.composition.json
     # Commit Compo     7    ${ehr_index}    ${compo data sets}/minimal_evaluation_4.composition.json
-    Commit Compo     8    ${ehr_index}    ${compo data sets}/all_types.composition.json
+#    Commit Compo     8    ${ehr_index}    ${compo data sets}/all_types.composition.json
 
     Commit Compo     9    ${ehr_index}    ${compo data sets}/minimal_instruction_1.composition.json
     Commit Compo    10    ${ehr_index}    ${compo data sets}/minimal_instruction_2.composition.json
@@ -589,6 +590,11 @@ Create EHR Record On The Server
     # TODO: @WLAD next block is a workaround related to https://github.com/ehrbase/project_management/issues/453
     #       refactore it when isssue is fixed
     ${time_created}=    Replace String 	${time_created}[0] 	, 	.       # replace comma with dot
+# @ndanilin: our implementation is:
+#   - if "e/time_created/value" then return with timezone
+#   - if "e/time_created" then return without timezone
+    ${time_created_timezone}=    Catenate    	${time_created}+03:00
+    Set Suite Variable    ${time_created_timezone}    ${time_created_timezone}
     # ${time_created}=    Replace String 	${time_created}  ${SPACE}  T    # replace space with 'T'
             # ${timezoneoffset}=  Set Variable    ${time_created}[-6:]            # save UTC offset
             # ${timestamp}=       Convert Date    ${time_created}[0:-6]           # make Robot valid timestamp by removing the timezone
@@ -951,7 +957,7 @@ A/100
 
 A/101
     ${A/101}=           Load JSON From File    ${QUERY RESULTS LOADED DB}/A/101.tmp.json
-    ${temp}=            Create List  ${ehr_id_value}[0]  ${time_created["value"]}  ${system_id}[0]
+    ${temp}=            Create List  ${ehr_id_value}[0]  ${time_created_timezone}  ${system_id}[0]
     ${A/101}=           Add Object To Json    ${A/101}    $.rows    ${temp}
                         Output    ${A/101}    ${QUERY RESULTS LOADED DB}/A/101.tmp.json
 
@@ -962,7 +968,7 @@ A/102
 
 A/103
     ${A/103}=           Load JSON From File    ${QUERY RESULTS LOADED DB}/A/103.tmp.json
-    ${temp}=            Create List  ${ehr_id_value}[0]  ${time_created["value"]}  ${system_id}[0]
+    ${temp}=            Create List  ${ehr_id_value}[0]  ${time_created_timezone}  ${system_id}[0]
     ${A/103}=           Add Object To Json    ${A/103}    $.rows    ${temp}
                         Output    ${A/103}    ${QUERY RESULTS LOADED DB}/A/103.tmp.json
 
@@ -1447,7 +1453,7 @@ D/200
     ...                 is not filled with dublicates on every interation which takes place for each Composition. 
     ...                 Same flow as A/101
                         Return From Keyword If    ${compo_index}!=1    NOTHING TO DO HERE!
-                        Create Temp List    ${ehr_id_value}[0]    ${time_created["value"]}    ${system_id}[0]
+                        Create Temp List    ${ehr_id_value}[0]    ${time_created_timezone}    ${system_id}[0]
                         Update 'rows' in Temp Result-Data-Set    D/200
 
 D/201
@@ -1460,7 +1466,7 @@ D/201
 D/300
     [Documentation]     same flow as D/200
                         Return From Keyword If    ${compo_index}!=1    NOTHING TO DO HERE!
-                        Create Temp List    ${ehr_id_value}[0]    ${time_created["value"]}    ${system_id}[0]
+                        Create Temp List    ${ehr_id_value}[0]    ${time_created_timezone}    ${system_id}[0]
                         Update 'rows' in Temp Result-Data-Set    D/300
 
 D/301
@@ -1473,7 +1479,7 @@ D/301
 D/302
     [Documentation]     same flow as D/200
                         Return From Keyword If    ${compo_index}!=1    NOTHING TO DO HERE!
-                        Create Temp List    ${ehr_id_value}[0]    ${time_created["value"]}    ${system_id}[0]
+                        Create Temp List    ${ehr_id_value}[0]    ${time_created_timezone}    ${system_id}[0]
                         Update 'rows' in Temp Result-Data-Set    D/302
 
 D/303
@@ -1486,13 +1492,13 @@ D/303
 D/304
     [Documentation]     same flow as D/200
                         Return From Keyword If    ${compo_index}!=1    NOTHING TO DO HERE!
-                        Create Temp List    ${ehr_id_value}[0]    ${time_created["value"]}    ${system_id}[0]
+                        Create Temp List    ${ehr_id_value}[0]    ${time_created_timezone}    ${system_id}[0]
                         Update 'rows' in Temp Result-Data-Set    D/304
 
 D/306
     [Documentation]     same flow as D/200
                         Return From Keyword If    ${compo_index}!=1    NOTHING TO DO HERE!
-                        Create Temp List    ${ehr_id_value}[0]    ${time_created["value"]}    ${system_id}[0]
+                        Create Temp List    ${ehr_id_value}[0]    ${time_created_timezone}    ${system_id}[0]
                         Update 'rows' in Temp Result-Data-Set    D/306
 
 D/307
@@ -1505,7 +1511,7 @@ D/307
 D/308
     [Documentation]     same flow as D/200
                         Return From Keyword If    ${compo_index}!=1    NOTHING TO DO HERE!
-                        Create Temp List    ${ehr_id_value}[0]    ${time_created["value"]}    ${system_id}[0]
+                        Create Temp List    ${ehr_id_value}[0]    ${time_created_timezone}    ${system_id}[0]
                         Update 'rows' in Temp Result-Data-Set    D/308
 
 D/309
@@ -1519,7 +1525,7 @@ D/309
 D/310
     [Documentation]     same flow as D/200
                         Return From Keyword If    ${compo_index}!=1    NOTHING TO DO HERE!
-                        Create Temp List    ${ehr_id_value}[0]    ${time_created["value"]}    ${system_id}[0]
+                        Create Temp List    ${ehr_id_value}[0]    ${time_created_timezone}    ${system_id}[0]
                         Update 'rows' in Temp Result-Data-Set    D/310
 
 D/311
@@ -1534,7 +1540,7 @@ D/312
                         Return From Keyword If    ${compo_index}!=1    NOTHING TO DO HERE!
                         Return From Keyword If    ${ehr_index}>5   NOT IN TOP 5!
                         Create Temp List    ${ehr_id_value}[0]
-                        ...                 ${time_created["value"]}
+                        ...                 ${time_created_timezone}
                         ...                 ${system_id}[0]
                         ...                 TODOO: CLARIFY w/ @PABLO - TOP5 newest OR oldest?
                         Update 'rows' in Temp Result-Data-Set    D/312

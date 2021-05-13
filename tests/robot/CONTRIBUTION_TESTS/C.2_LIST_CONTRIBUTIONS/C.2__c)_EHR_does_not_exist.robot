@@ -45,6 +45,8 @@ Force Tags    refactor   future
 *** Test Cases ***
 Alternative flow 2: get CONTRIBUTIONS of non existing EHR
 
+    [Tags]      not_described_in_the_specification
+
     retrieve CONTRIBUTION(S) by fake ehr_id (JSON)
 
     check response: is negative indicating non-existent ehr_id

@@ -25,6 +25,7 @@ Documentation    COMPOSITION Specific Keywords
 # Resource    generic_keywords.robot
 # Resource    template_opt1.4_keywords.robot
 # Resource    ehr_keywords.robot
+Resource        ${EXECDIR}/robot/_resources/suite_settings.robot
 
 
 
@@ -91,6 +92,25 @@ commit invalid composition (JSON)
                         Should Be Equal As Strings   ${resp.status_code}   400
 
 
+commit invalid composition 422 (JSON)
+    [Arguments]         ${composition_json}
+    [Documentation]     Creates the first version of a new COMPOSITION
+    ...                 DEPENDENCY: `upload OPT`, `create EHR`
+    ...
+    ...                 ENDPOINT: POST /ehr/${ehr_id}/composition
+
+                        # TODO: FIX ME! should be 'get invalid compo file'
+                        get invalid OPT file    ${composition_json}
+
+    &{headers}=         Create Dictionary   Content-Type=application/xml
+                        ...                 Accept=application/json
+                        ...                 Prefer=return=representation
+
+    ${resp}=            Post Request        ${SUT}   /ehr/${ehr_id}/composition   data=${file}   headers=${headers}
+                        log to console      ${resp.content}
+                        Should Be Equal As Strings   ${resp.status_code}   422
+
+
 commit invalid composition (XML)
     [Arguments]         ${composition_xml}
     [Documentation]     Creates the first version of a new COMPOSITION
@@ -108,6 +128,25 @@ commit invalid composition (XML)
     ${resp}=            Post Request        ${SUT}   /ehr/${ehr_id}/composition   data=${file}   headers=${headers}
                         log to console      ${resp.content}
                         Should Be Equal As Strings   ${resp.status_code}   400
+
+
+commit invalid composition 422 (XML)
+    [Arguments]         ${composition_xml}
+    [Documentation]     Creates the first version of a new COMPOSITION
+    ...                 DEPENDENCY: `upload OPT`, `create EHR`
+    ...
+    ...                 ENDPOINT: POST /ehr/${ehr_id}/composition
+
+                        # TODO: FIX ME! Should be 'get invalid compo file'
+                        get invalid OPT file    ${composition_xml}
+
+    &{headers}=         Create Dictionary   Content-Type=application/xml
+                        ...                 Accept=application/json
+                        ...                 Prefer=return=representation
+
+    ${resp}=            Post Request        ${SUT}   /ehr/${ehr_id}/composition   data=${file}   headers=${headers}
+                        log to console      ${resp.content}
+                        Should Be Equal As Strings   ${resp.status_code}   422
 
 
 commit composition - no referenced OPT
@@ -726,8 +765,9 @@ delete composition
                         Should Be Equal As Strings    ${resp.status_code}    204
 
                         # the ETag comes with quotes, this removes them
+# @ndanilin: in our implementaion ETag comes without quotes
     ${del_version_uid}=    Get Substring        ${resp.headers['ETag']}    1    -1
-                        log to console          \ndeleted version uid: ${del_version_uid}
+                        log to console          \ndeleted version uid: ${del_version_uid}                
                         Set Test Variable       ${del_version_uid}    ${del_version_uid}
 
 
@@ -789,6 +829,8 @@ capture time before first commit
     capture point in time   0
 
 
+#     @ndanilin: the time on local machine and on server can be different, so this way isn't very good.
+# https://jira-1848
 capture point in time
     [Arguments]         ${point_in_time}
     [Documentation]     :point_in_time: integer [0, 1, 2]
@@ -798,8 +840,8 @@ capture point in time
     ...                 s. http://robotframework.org/robotframework/latest/libraries/DateTime.html
     ...                 for DateTime Library docs
 
-    ${time}=            Get Current Date    result_format=%Y-%m-%dT%H:%M:%S.%f
-                        Set Suite Variable   ${time_${point_in_time}}   ${time}+00:00
+    ${time}=            Get Current Date    result_format=%Y-%m-%dT%H:%M:%S.%f   time_zone=UTC   increment=3 hours
+                        Set Suite Variable   ${time_${point_in_time}}   ${time}+03:00
                         Sleep               1
 
 

@@ -679,6 +679,7 @@ GET /ehr/ehr_id/directory?version_at_time&path
 validate POST response - 201 created directory
     [Documentation]     CASE: new directory was created.
     ...                 Request was send with `Prefer=return=representation`.
+    [Tags]    our_implementation_true
 
                         Should Be Equal As Strings    ${response.status_code}    201
                         Dictionary Should Contain Key     ${response.json()}     uid

@@ -24,6 +24,7 @@ Force Tags
 
 *** Test Cases ***
 Alternative flow 3: get directory at time on EHR with directory with empty time
+    [Tags]
 
     create EHR
     create DIRECTORY (JSON)    empty_directory.json

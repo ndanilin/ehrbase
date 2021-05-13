@@ -24,6 +24,7 @@ Force Tags
 
 *** Test Cases ***
 Main flow: delete directory on empty EHR
+    [Tags]
 
     create EHR
     delete DIRECTORY - fake version_uid (JSON)

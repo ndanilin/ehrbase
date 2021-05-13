@@ -27,7 +27,7 @@ Force Tags
 
 *** Test Cases ***
 Alternative flow 3 update an existing persistent COMPOSITION referencing different template
-
+    [Tags]    our_implementation_true
     # comment: Upload multiple OPTs
     upload OPT    minimal_persistent/persistent_minimal.opt
     upload OPT    minimal_persistent/persistent_minimal_2.opt
@@ -40,6 +40,6 @@ Alternative flow 3 update an existing persistent COMPOSITION referencing differe
     # comment: Commit a new version for the COMPOSITION referencing _2 OPT which is a different one 
     #          than the one referenced by the first committed COMPO
     update composition - invalid opt reference (JSON)    minimal_persistent/persistent_minimal.composition.extdatetime.v2_2.xml
-    Should Be Equal As Strings   ${response.status_code}   400
+    Should Be Equal As Strings   ${response.status_code}   422
 
     [Teardown]    restart SUT

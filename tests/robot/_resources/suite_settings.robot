@@ -21,7 +21,7 @@
 Documentation   General setting for OpenEHR test suites.
 # Metadata    Version        1.0
 
-Library     REST    ${BASE_URL}    #ssl_verify=false
+Library     REST    ${BASEURL}    #ssl_verify=false
 Library     RequestsLibrary  WITH NAME  R
 Library     String
 Library     Collections
@@ -30,6 +30,7 @@ Library     Process
 Library     XML
 Library     JSONLibrary
 Library     DateTime
+Library     DebugLibrary
 
 Library     ${EXECDIR}/robot/_resources/libraries/dockerlib.py
 Library     ${EXECDIR}/robot/_resources/libraries/jsonlib.py
@@ -52,10 +53,8 @@ Variables   ${EXECDIR}/robot/_resources/variables/sut_config.py
 # ${hip_baseurl_v1}     http://localhost:8080/ehrbase/rest/ecis/v1
 # ${template_id}    IDCR%20-%20Immunisation%20summary.v0        # TODO: @wlad rm if nothing breaks
 # ${invalid_ehr_id}    123
-${BASE_URL}              http://localhost:8080/ehrbase/rest/openehr/v1
 ${PROJECT_ROOT}          ${EXECDIR}${/}..
 ${POM_FILE}              ${PROJECT_ROOT}${/}pom.xml
-${CREATING_SYSTEM_ID}    ${NODENAME}
 ${SMOKE_TEST_PASSED}     ${TRUE}
 
 ${SUT}                   TEST    # Switch System Under Test (SUT). Check tests/README.md for details.
@@ -116,21 +115,26 @@ ${CACHE-ENABLED}         ${TRUE}
 # #       BASIC_AUTH (basic auth string for EHRSCAPE, i.e.: export BASIC_AUTH="Basic abc...")
 # #       EHRSCAPE_USER
 # #       EHRSCAPE_PASSWORD
-# &{EHRSCAPE}             URL=https://rest.ehrscape.com/rest/openehr/v1
-# ...                     HEARTBEAT=https://rest.ehrscape.com/
-# ...                     CREDENTIALS=@{scapecreds}
-# ...                     BASIC_AUTH={"Authorization": "%{BASIC_AUTH}"}
-# ...                     NODENAME=piri.ehrscape.com
-# ...                     CONTROL=NONE
-# @{scapecreds}           %{EHRSCAPE_USER}    %{EHRSCAPE_PASSWORD}
+&{EHRSCAPE}             URL=%{URL}
+...                     HEARTBEAT=%{HEARTBEAT}
+...                     ADMIN_CREDENTIALS=@{admincreds}
+...                     CREDENTIALS=@{scapecreds}
+...                     BASIC_AUTH={"Authorization": "%{BASIC_AUTH}"}
+...                     NODENAME=auto1
+...                     CONTROL=NEW_TENANT
+@{admincreds}           %{ADMIN_USER}    %{ADMIN_PASSWORD}
+@{scapecreds}           %{EHRSCAPE_USER}    %{EHRSCAPE_PASSWORD}
 
 
 
-# ${BASEURL}              ${${SUT}.URL}
-# ${HEARTBEAT_URL}        ${${SUT}.HEARTBEAT}
-# ${AUTHORIZATION}        ${${SUT}.${SECURITY_AUTHTYPE}}
-# ${CREATING_SYSTEM_ID}   ${${SUT}.NODENAME}
-# ${CONTROL_MODE}         ${${SUT}.CONTROL}
+
+${BASEURL}              ${${SUT}.URL}
+${HEARTBEAT_URL}        ${${SUT}.HEARTBEAT}
+${ADMIN_CREDENTIALS}    ${${SUT}.ADMIN_CREDENTIALS}
+${CREDENTIALS}          ${${SUT}.CREDENTIALS}
+${AUTHORIZATION}        ${${SUT}.BASIC_AUTH}
+${CREATING_SYSTEM_ID}   ${${SUT}.NODENAME}
+${CONTROL_MODE}         ${${SUT}.CONTROL}
 
 # ${HEARTBEAT_URL}        ${HEARTBEAT}
 # ${AUTHORIZATION}        ${SECURITY_AUTHTYPE}

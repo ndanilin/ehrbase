@@ -26,6 +26,8 @@ Force Tags
 *** Test Cases ***
 Main flow: create directory on empty EHR
 
+    [Tags]
+
     create EHR
 
     create DIRECTORY (JSON)    empty_directory.json

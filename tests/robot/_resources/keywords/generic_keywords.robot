@@ -21,6 +21,7 @@ Library    Collections
 Library    String
 Library    Process
 Library    OperatingSystem
+Resource   new_tenant_keywords.robot
 
 
 
@@ -181,11 +182,6 @@ start openehr server
     run keyword if  '${CODE_COVERAGE}' == 'True'   start server process with coverage
     run keyword if  '${CODE_COVERAGE}' == 'False'  start server process without coverage
     Wait For Process  ehrserver  timeout=25  on_timeout=continue
-
-    # comment: log EHRbase's stack trace
-    Log File    ../stderr.txt
-    Log File    ../stdout.txt
-    
     Is Process Running  ehrserver
     ${status}=      Run Keyword And Return Status    Process Should Be Running    ehrserver
                     Run Keyword If    ${status}==${FALSE}    Fatal Error    Server failed to start!
@@ -468,6 +464,9 @@ abort tests due to issues with remote test environment
 
 
 startup SUT
+    Run Keyword And Return If   "${CONTROL_MODE}"=="NEW_TENANT"
+                          ...    prepare tenant and user
+
     get application version
 
     # comment: switch to manual test environment control when "-v nodocker" cli option is used
@@ -509,7 +508,10 @@ startup SUT
 
 
 shutdown SUT
-    [Documentation]     Cleans up and shuts down test environment 
+    [Documentation]     Cleans up and shuts down test environment
+
+    Run Keyword And Return If   "${CONTROL_MODE}"=="NEW_TENANT"
+                          ...   Log   CONTROL_MODE IS NEW_TENANT SO WE NEED NOTHINK TO DO IN SHUTDOWN!!!   console=true
 
     Run Keyword If    ${REDUMP_REQUIRED}    db_keywords.dump_db
     

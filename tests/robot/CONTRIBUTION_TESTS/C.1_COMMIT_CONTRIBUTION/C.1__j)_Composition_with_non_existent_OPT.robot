@@ -44,7 +44,10 @@ Force Tags    refactor
 
 
 *** Test Cases ***
+#https://jira-1989
 Alternative flow 9. commit CONTRIBUTION with COMPOSITION referencing a non existing OPT
+
+      [Tags]  our_implementation_false
 
       create EHR
 

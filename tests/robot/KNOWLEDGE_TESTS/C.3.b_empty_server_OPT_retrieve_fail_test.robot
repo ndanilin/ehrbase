@@ -48,6 +48,7 @@ Force Tags   OPT14    OPT14_retrieve
 *** Test Cases ***
 Retrieve OPT from empty server
     [Documentation]    ...
+    [Tags]
 
     retrieve OPT by random templade_id
 

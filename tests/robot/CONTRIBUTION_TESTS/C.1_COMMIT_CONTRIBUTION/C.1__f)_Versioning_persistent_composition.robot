@@ -50,7 +50,10 @@ Force Tags    refactor
 
 
 *** Test Cases ***
+##https://jira-1989
 Alternative flow 5: commit CONTRIBUTIONS versioning persistent COMPOSITION
+
+    [Tags]  our_implementation_false
 
     upload OPT    minimal_persistent/persistent_minimal.opt
     create EHR

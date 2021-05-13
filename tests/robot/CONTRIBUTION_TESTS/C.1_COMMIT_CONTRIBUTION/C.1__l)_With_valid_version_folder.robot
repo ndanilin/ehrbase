@@ -46,7 +46,10 @@ Force Tags    refactor
 
 
 *** Test Cases ***
+#https://jira-1989
 Main flow: successfully commit CONTRIBUTION with single valid VERSION<FOLDER> to create
+
+    [Tags]  our_implementation_false
 
     create EHR
     commit CONTRIBUTION (JSON)    minimal/folder.contribution.creation.json
@@ -55,8 +58,10 @@ Main flow: successfully commit CONTRIBUTION with single valid VERSION<FOLDER> to
 
     [Teardown]    restart SUT
 
-
+#https://jira-1989
 Main flow: successfully commit CONTRIBUTION with single valid VERSION<FOLDER> to modify
+
+    [Tags]  our_implementation_false
 
     create EHR
     # comment: prepare a folder to modify later. KW already sets necessary ${version_id}

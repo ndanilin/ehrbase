@@ -1,0 +1,7 @@
+.idea
+.vscode
+results
+target
+venv
+venv_ubuntu
+debug*.robot

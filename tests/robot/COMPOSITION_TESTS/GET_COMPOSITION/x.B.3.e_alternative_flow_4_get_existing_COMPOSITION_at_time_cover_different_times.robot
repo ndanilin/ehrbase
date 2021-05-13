@@ -26,8 +26,9 @@ Force Tags
 
 
 *** Test Cases ***
+
 Alternative flow 4 get existing COMPOSITION at time, cover different times
-    [Tags]     
+    [Tags]
 
     upload OPT    minimal/minimal_observation.opt
 

@@ -43,7 +43,10 @@ Force Tags    refactor
 
 
 *** Test Cases ***
+#https://jira-1989
 Alternative flow 3: has CONTRIBUTION, EHR with CONTRIBUTIONS, but CONTRIBUTION doesn't exist
+
+    [Tags]  our_implementation_false
 
     upload OPT    minimal/minimal_instruction.opt
     create EHR

@@ -34,7 +34,9 @@ Force Tags      COMPOSITION_get_versioned
 
 
 *** Test Cases ***
+# @ndanilin: in the specification the response structure is like ours
 1. Get Revision History of Versioned Composition Of Existing EHR (JSON)
+    [Tags]    our_implementation_true
     [Documentation]    Simple test
 
     prepare new request session    JSON    Prefer=return=representation
@@ -43,14 +45,17 @@ Force Tags      COMPOSITION_get_versioned
 
     get revision history of versioned composition of EHR by UID    ${versioned_object_uid}
     Should Be Equal As Strings    ${response.status}    200
-    ${length} =    Get Length    ${response.body} 	
+    ${length} =    Get Length    ${response.body}[items]
     Should Be Equal As Integers 	${length} 	1
 
-    ${item1} =    Get From List    ${response.body}    0
+    ${item1} =    Get From List    ${response.body}[items]    0
     Should Be Equal As Strings    ${version_uid}    ${item1.version_id.value}
 
 
+# @ndanilin: in the specification the response structure is like ours
 2. Get Revision History of Versioned Composition Of Existing EHR With Two Composition Versions (JSON)
+    [Tags]    our_implementation_true
+
     [Documentation]    Testing with two versions, so the result should list two history entries.
 
     prepare new request session    JSON    Prefer=return=representation
@@ -61,17 +66,20 @@ Force Tags      COMPOSITION_get_versioned
 
     get revision history of versioned composition of EHR by UID    ${versioned_object_uid}
     Should Be Equal As Strings    ${response.status}    200
-    ${length} =    Get Length    ${response.body} 	
+    ${length} =    Get Length    ${response.body}[items]
     Should Be Equal As Integers 	${length} 	2
 
-    ${item1} =    Get From List    ${response.body}    0
+    ${item1} =    Get From List    ${response.body}[items]    0
     Should Be Equal As Strings    ${version_uid}    ${item1.version_id.value}
 
-    ${item2} =    Get From List    ${response.body}    1
+    ${item2} =    Get From List    ${response.body}[items]    1
     Should Be Equal As Strings    ${version_uid[0:-1]}2    ${item2.version_id.value}
 
 
+# @ndanilin: in the specification the response structure is like ours
 3. Get Correct Ordered Revision History of Versioned Composition Of Existing EHR With Two Composition Versions (JSON)
+    [Tags]    our_implementation_true
+
     [Documentation]     Testing with two versions like above, but checking the response more thoroughly.
 
     prepare new request session    JSON    Prefer=return=representation
@@ -82,11 +90,11 @@ Force Tags      COMPOSITION_get_versioned
 
     get revision history of versioned composition of EHR by UID    ${versioned_object_uid}
     Should Be Equal As Strings    ${response.status}    200
-    ${length} =    Get Length    ${response.body} 	
+    ${length} =    Get Length    ${response.body}[items]
     Should Be Equal As Integers 	${length} 	2
 
     # comment: Attention: the following code is depending on the order of the array!
-    ${item1} =    Get From List    ${response.body}    0
+    ${item1} =    Get From List    ${response.body}[items]    0
     Should Be Equal As Strings    ${version_uid}    ${item1.version_id.value}
     # comment: check if change type is "creation"
     ${audit1} =    Get From List    ${item1.audits}    0
@@ -94,7 +102,7 @@ Force Tags      COMPOSITION_get_versioned
     # comment: save timestamp to compare later
     ${timestamp1} = 	Convert Date    ${audit1.time_committed.value}    result_format=%Y-%m-%dT%H:%M:%S.%f
 
-    ${item2} =    Get From List    ${response.body}    1
+    ${item2} =    Get From List    ${response.body}[items]    1
     Should Be Equal As Strings    ${version_uid[0:-1]}2    ${item2.version_id.value}
     # comment: check if change type is "modification"
     ${audit2} =    Get From List    ${item2.audits}    0
@@ -111,6 +119,7 @@ Force Tags      COMPOSITION_get_versioned
 
 
 4. Get Revision History of Versioned Composition Of Non-Existing EHR (JSON)
+    [Tags]
     [Documentation]    Simple test
 
     prepare new request session    JSON    Prefer=return=representation
@@ -123,6 +132,7 @@ Force Tags      COMPOSITION_get_versioned
 
 
 5. Get Revision History of Versioned Composition Of Non-Existing Composition (JSON)
+    [Tags]
     [Documentation]    Simple test
 
     prepare new request session    JSON    Prefer=return=representation

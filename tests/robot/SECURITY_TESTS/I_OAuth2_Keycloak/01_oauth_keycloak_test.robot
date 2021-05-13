@@ -59,12 +59,14 @@ Resource        ${EXECDIR}/robot/_resources/suite_settings.robot
 
 05 Base URL is secured
     [Documentation]     Checks private resource is NOT accessible without auth.
+    [Tags]
                         Create Session    secured    ${BASEURL}
     ${response}         Get Request    secured    /
                         Should Be Equal As Strings 	  ${response.status_code}    401
 
 06 API endpoints are secured
     [Documentation]     Checks private resources are NOT accessible without auth.
+    [Tags]
     # EHR /EHR_STATUS
         REST.GET        ${BASEURL}/ehr
         Integer         response status    401
@@ -155,6 +157,7 @@ Resource        ${EXECDIR}/robot/_resources/suite_settings.robot
 
 
 07 Private resources are NOT available with invalid/expired token
+        [Tags]
         Set Headers     { "Authorization": "Bearer ${expired_token}" }
         REST.GET        ${BASEURL}/ehr
                         Output

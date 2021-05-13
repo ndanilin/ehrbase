@@ -23,8 +23,9 @@ Force Tags    refactor
 
 
 *** Test Cases ***
+#https://jira-1846
 Alternative flow 1: update directory on empty EHR
-    [Tags]          
+    [Tags]    our_implementation_false
 
     create EHR
     update DIRECTORY - ehr w/o directory (JSON)    update/2_add_subfolders.json

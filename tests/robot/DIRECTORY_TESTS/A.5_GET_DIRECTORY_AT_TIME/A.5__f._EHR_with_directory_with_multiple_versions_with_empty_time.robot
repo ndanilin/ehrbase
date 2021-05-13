@@ -25,6 +25,7 @@ Force Tags
 
 *** Test Cases ***
 Alternative flow 5: get directory at time on EHR with directory with multiple versions with empty time
+    [Tags]
 
     create EHR
 

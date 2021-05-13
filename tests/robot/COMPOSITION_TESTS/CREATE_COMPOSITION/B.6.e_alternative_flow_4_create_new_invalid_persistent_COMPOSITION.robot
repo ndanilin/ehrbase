@@ -26,12 +26,15 @@ Force Tags
 
 
 *** Test Cases ***
+
+# https://jira-1799
 Alternative flow 4 create new invalid persistent COMPOSITION
+    [Tags]    our_implementation_true
 
     upload OPT    minimal_persistent/persistent_minimal.opt
 
     create EHR
 
-    commit invalid composition (JSON)    minimal_persistent/persistent_minimal.composition.extdatetime.invalid.xml
+    commit invalid composition 422 (JSON)    minimal_persistent/persistent_minimal.composition.extdatetime.invalid.xml
 
     [Teardown]    restart SUT

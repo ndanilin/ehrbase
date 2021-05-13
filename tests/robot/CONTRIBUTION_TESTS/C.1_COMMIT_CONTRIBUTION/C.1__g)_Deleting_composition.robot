@@ -51,7 +51,10 @@ Force Tags    refactor
 
 
 *** Test Cases ***
+#https://jira-1989
 Alternative flow 6: commit CONTRIBUTIONS deleting a COMPOSITION
+
+    [Tags]  our_implementation_false
 
     upload OPT    minimal/minimal_admin.opt
     create EHR

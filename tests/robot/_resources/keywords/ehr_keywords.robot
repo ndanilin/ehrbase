@@ -172,6 +172,15 @@ validate POST response - 204 no content
     String              response body    ${EMPTY}
 
 
+validate POST response - 201 no content
+    [Documentation]     CASE: new ehr was created.
+    ...                 Request was send w/o `Prefer=return` header or with
+    ...                 `Prefer=return=minimal`. Body has to be empty.
+
+    Integer             response status    201
+    String              response body    ${EMPTY}
+
+
 # PUT PUT PUT PUT PUT
 #/////////////////////
 
@@ -184,7 +193,13 @@ validate PUT response - 204 no content
     String              response body    ${EMPTY}
 
 
+validate PUT response - 201 no content
+    [Documentation]     CASE: new ehr was created w/ given ehr_id.
+    ...                 Request was send w/o `Prefer=return` header or with
+    ...                 `Prefer=return=minimal`. Body has to be empty.
 
+    Integer             response status    201
+    String              response body    ${EMPTY}
 
 
 # create EHR XML

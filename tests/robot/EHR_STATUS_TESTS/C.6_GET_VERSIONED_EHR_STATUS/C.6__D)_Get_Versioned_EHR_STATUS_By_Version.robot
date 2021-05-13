@@ -86,6 +86,7 @@ Force Tags
 
 1d. Get Versioned Status Of Existing EHR by Invalid Version UID (JSON)
     [Documentation]    Simple, invalid (negative) version number
+    [Tags]
 
     prepare new request session    JSON    Prefer=return=representation
 
@@ -103,6 +104,7 @@ Force Tags
 
 1e. Get Versioned Status Of Existing EHR by Invalid Version UID (JSON)
     [Documentation]    Simple, invalid (floating point) version number
+    [Tags]
 
     prepare new request session    JSON    Prefer=return=representation
 

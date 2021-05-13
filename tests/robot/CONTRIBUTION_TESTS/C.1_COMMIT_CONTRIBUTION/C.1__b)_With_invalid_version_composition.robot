@@ -46,6 +46,8 @@ Force Tags    refactor
 *** Test Cases ***
 Alternative flow 1: commit CONTRIBUTION with errors in VERSION<COMPOSITION>
 
+    [Tags]
+
     upload OPT    minimal/minimal_instruction.opt
     create EHR
     commit invalid CONTRIBUTION (JSON)    multiple_valid_and_invalid_compos.json

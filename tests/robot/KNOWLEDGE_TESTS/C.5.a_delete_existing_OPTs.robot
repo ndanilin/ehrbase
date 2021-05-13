@@ -28,6 +28,7 @@ Force Tags      OPT14    OPT14_delete    TODO
 *** comments ***
 This will probably be available via ADMIN API only!
 
+#can_not_test
 
 *** Test Cases ***
 Delete OPT

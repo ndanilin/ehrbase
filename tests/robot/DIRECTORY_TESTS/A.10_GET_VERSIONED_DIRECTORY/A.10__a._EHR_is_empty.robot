@@ -24,6 +24,7 @@ Force Tags
 
 *** Test Cases ***
 Main flow: get versioned directory from existent and empty EHR
+    [Tags]
 
     create EHR
 

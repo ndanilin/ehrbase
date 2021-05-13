@@ -26,8 +26,9 @@ Force Tags
 
 
 *** Test Cases ***
+
 Alternative flow 2 get COMPOSITION at time, COMPOSITION doesnt exist
-    [Tags]   
+    [Tags]
 
     upload OPT    minimal/minimal_observation.opt
     create EHR

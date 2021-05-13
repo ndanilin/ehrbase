@@ -30,5 +30,5 @@ Alternative flow 3 create new invalid event COMPOSITION
 
     upload OPT    nested/nested.opt
     create EHR    XML
-    commit invalid composition (XML)    nested/nested.composition.extdatetimes.invalid.xml
+    commit invalid composition 422 (XML)    nested/nested.composition.extdatetimes.invalid.xml
     [Teardown]    restart SUT

@@ -107,8 +107,11 @@ Force Tags      COMPOSITION_get_versioned
     Should Be Equal As Strings    ${response.status}    400
 
 
+# In the specification:
+# Response 404: when a VERSION with version_uid does not exist
 1f. Get Versioned Composition Of Existing EHR by Invalid Version UID (JSON)
     [Documentation]    Simple, invalid (random) version UID
+    [Tags]    our_implementation_true
 
 
     prepare new request session    JSON    Prefer=return=representation
@@ -117,7 +120,7 @@ Force Tags      COMPOSITION_get_versioned
     
     generate random version_uid
     get version of versioned composition of EHR by UID    ${versioned_object_uid}    ${version_uid}
-    Should Be Equal As Strings    ${response.status}    400
+    Should Be Equal As Strings    ${response.status}    404
 
 
 2. Get Versioned Composition Of EHR by Version UID Invalid EHR (JSON)
@@ -161,9 +164,11 @@ Force Tags      COMPOSITION_get_versioned
     get version of versioned composition of EHR by UID    ${versioned_object_uid}    ${version_uid}
     Should Be Equal As Strings    ${response.status}    404
 
-
+# In the specification:
+# Response 404: when a VERSIONED_COMPOSITION with versioned_object_uid does not exist
 5. Get Versioned Composition Of Existing EHR With 2 Versions by Version UID Invalid Version UID (JSON)
     [Documentation]    Simple, valid EHR_ID but invalid version_uid
+    [Tags]    our_implementation_true
 
     prepare new request session    JSON    Prefer=return=representation
 
@@ -177,4 +182,4 @@ Force Tags      COMPOSITION_get_versioned
     Set Test Variable  ${version_uid}  ${version_uid[0:-1]}2
 
     get version of versioned composition of EHR by UID    ${versioned_object_uid}    ${version_uid}
-    Should Be Equal As Strings    ${response.status}    400
+    Should Be Equal As Strings    ${response.status}    404

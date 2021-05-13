@@ -45,6 +45,8 @@ Force Tags
 *** Test Cases ***
 Alternative flow 2 get CONTRIBUTION on a non existent EHR
 
+    [Tags]
+
     create fake EHR
     create fake CONTRIBUTION
     retrieve CONTRIBUTION by fake ehr_id & contri_uid (JSON)

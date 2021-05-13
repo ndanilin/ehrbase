@@ -25,6 +25,8 @@ Force Tags
 *** Test Cases ***
 Alternative flow 2: create directory on non-existent EHR
 
+    [Tags]
+
     create fake EHR
 
     create DIRECTORY - fake ehr_id (JSON)    subfolders_in_directory.json

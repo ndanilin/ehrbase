@@ -62,6 +62,8 @@ SKIPPING IMPLEMENTATION FOR NOW!!! WILL BE CONTINUED AS SOON AS ADL 2.0 becomes 
 #     versioned/Test versioned v1.opt
 #     versioned/Test versioned v2.opt
 
+#not_realized_in_our_implementation
+
 Retrieve Versioned OPT
     [Documentation]    ...
     [Template]         retrieve versioned OPT

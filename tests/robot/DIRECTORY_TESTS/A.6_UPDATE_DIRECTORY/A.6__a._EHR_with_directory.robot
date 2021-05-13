@@ -30,7 +30,7 @@ Main flow: update directory from EHR with directory
     ...                     2. Add subfolders
     ...                     3. Add items to folder/subfolder
     ...                     4. validate result
-    [Tags]              
+    [Tags]
 
     update DIRECTORY (JSON)    update/2_add_subfolders.json
     validate PUT response - 200 updated

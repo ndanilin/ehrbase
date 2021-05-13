@@ -49,6 +49,7 @@ Force Tags
 
 2. Get Versioned Status Of Existing EHR by Time With Query (JSON)
     [Documentation]    Test with query param
+    [Tags]
 
     prepare new request session    JSON    Prefer=return=representation
 
@@ -56,7 +57,7 @@ Force Tags
     Should Be Equal As Strings    ${response.status}    201
 
     # comment: set the query parameter to current data and format as openEHR REST spec conformant timestamp
-    ${date} = 	Get Current Date    result_format=%Y-%m-%dT%H:%M:%S.%f
+    ${date} = 	Get Current Date    result_format=%Y-%m-%dT%H:%M:%S.%f   time_zone=UTC   increment=3 hours
     Set Test Variable 	&{query} 	version_at_time=${date}     # set query as dictionary
 
     get versioned ehr_status of EHR by time
@@ -66,6 +67,7 @@ Force Tags
 
 3. Get Versioned Status Of Existing EHR by Time With Query (JSON)
     [Documentation]    Test with and without query param and multiple versions
+    [Tags]
 
     prepare new request session    JSON    Prefer=return=representation
 
@@ -89,7 +91,7 @@ Force Tags
     # comment: 2. check if current time returns latest version too
     Log    GET VERSIONED EHR_STATUS (LATEST - BY CURRENT TIME)
     # comment: set the query parameter to current date/time and format as openEHR REST spec conformant timestamp
-    ${current_time} =    Get Current Date    result_format=%Y-%m-%dT%H:%M:%S.%f
+    ${current_time} =    Get Current Date    result_format=%Y-%m-%dT%H:%M:%S.%f   time_zone=UTC   increment=3 hours
     Set Test Variable 	&{query} 	version_at_time=${current_time}     # set query as dictionary
     get versioned ehr_status of EHR by time
     Should Be Equal As Strings    ${response.status}    200
@@ -167,6 +169,7 @@ Force Tags
 
 7a. Get Versioned Status Of Existing EHR by Time With Parameter Check (JSON)
     [Documentation]    Checking for expected responses with and without valid parameters
+    [Tags]
 
     prepare new request session    JSON    Prefer=return=representation
 
@@ -174,7 +177,7 @@ Force Tags
     Should Be Equal As Strings    ${response.status}    201
 
     # comment: set the query parameter to current data in openEHR REST spec conformant timestamp
-    ${date} = 	Get Current Date    result_format=%Y-%m-%dT%H:%M:%S.%f
+    ${date} = 	Get Current Date    result_format=%Y-%m-%dT%H:%M:%S.%f   time_zone=UTC   increment=3 hours
     Set Test Variable 	&{query} 	version_at_time=${date}     # set query as dictionary
 
     get versioned ehr_status of EHR by time
@@ -211,6 +214,7 @@ Force Tags
 
 7d. Get Versioned Status Of Existing EHR by Timestamp From The Past As Parameter (JSON)
     [Documentation]    Checking for expected responses with and without valid parameters
+    [Tags]
 
     prepare new request session    JSON    Prefer=return=representation
 
@@ -227,6 +231,7 @@ Force Tags
 
 7e. Get Versioned Status Of Existing EHR by Timestamp From The Future As Parameter (JSON)
     [Documentation]    Checking for expected responses with and without valid parameters
+    [Tags]
 
     prepare new request session    JSON    Prefer=return=representation
 

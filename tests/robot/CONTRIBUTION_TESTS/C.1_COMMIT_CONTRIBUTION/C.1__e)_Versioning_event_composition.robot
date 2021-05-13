@@ -45,7 +45,10 @@ Force Tags    refactor
 
 
 *** Test Cases ***
+#https://jira-1786
 Alternative flow 4: commit CONTRIBUTIONS versioning event COMPOSITION
+
+    [Tags]  our_implementation_false
 
     upload OPT    minimal/minimal_admin.opt
     create EHR

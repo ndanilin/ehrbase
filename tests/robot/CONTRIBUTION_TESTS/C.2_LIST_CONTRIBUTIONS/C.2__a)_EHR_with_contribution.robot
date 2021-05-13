@@ -43,7 +43,10 @@ Force Tags    refactor
 
 
 *** Test Cases ***
+#https://jira-1989
 Main flow: get CONTRIBUTIONS of existing EHR with a just committed CONTRIBUTION
+
+    [Tags]  our_implementation_false
 
     upload OPT    minimal/minimal_evaluation.opt
     create EHR

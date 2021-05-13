@@ -47,6 +47,8 @@ Force Tags    refactor    future
 *** Test Cases ***
 Alternative flow 7: commit CONTRIBUTIONS for versioning, but second commit contains errors
 
+    [Tags]   not_realized_test
+
     upload OPT    minimal/minimal_admin.opt
     create EHR
     commit CONTRIBUTION (JSON)    minimal/minimal_admin.contribution.json

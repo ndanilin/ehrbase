@@ -43,7 +43,10 @@ Force Tags    refactor   future
 
 
 *** Test Cases ***
+# not described in the specification / ${versions} is not declered
 Alternative flow 1: get CONTRIBUTIONS of existing EHR with no CONTRIBUTIONS
+
+    [Tags]      not_described_in_the_specification    not-ready
 
     create EHR
 

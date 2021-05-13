@@ -36,7 +36,8 @@ Suite Setup    aql_query_keywords.Establish Preconditions
 # Test Teardown  restore clean SUT state
 # Suite Teardown    Run Keywords    Clean DB    # Delete Temp Result-Data-Sets
 
-Force Tags    refactor    AQL_loaded_db
+# https://jira-1929
+Force Tags    refactor    AQL_loaded_db    our_implementation_false
 
 
 
@@ -55,7 +56,7 @@ A-100 Execute Ad-Hoc Query - Get EHRs
 
 A-101 Execute Ad-Hoc Query - Get EHRs
     [Template]          execute ad-hoc query and check result (loaded DB)
-    [Tags]              
+    [Tags]
     A/101_get_ehrs.json    A/101.tmp.json
 
 
@@ -115,13 +116,13 @@ A-202 Execute Ad-Hoc Query - Get EHR By ID
 
 A-300 Execute Ad-Hoc Query - Get EHRs Which Have Compositions
     [Template]          execute ad-hoc query and check result (loaded DB)
-    [Tags]              
+    [Tags]
     A/300_get_ehrs_by_contains_any_composition.json               A/300.tmp.json
 
 
 A-400 Execute Ad-Hoc Query - Get EHRs Which Have Compositions
     [Template]          execute ad-hoc query and check result (loaded DB)
-    [Tags]              
+    [Tags]
     A/400_get_ehrs_by_contains_composition_with_archetype.json    A/400.tmp.json
     A/401_get_ehrs_by_contains_composition_with_archetype.json    A/401.tmp.json
     A/402_get_ehrs_by_contains_composition_with_archetype.json    A/402.tmp.json
@@ -129,7 +130,7 @@ A-400 Execute Ad-Hoc Query - Get EHRs Which Have Compositions
 
 A-500 Execute Ad-Hoc Query - Get EHRs Which Have Compositions
     [Template]          execute ad-hoc query and check result (loaded DB)
-    [Tags]                  
+    [Tags]
     A/500_get_ehrs_by_contains_composition_contains_entry_of_type.json    A/500.tmp.json
     A/501_get_ehrs_by_contains_composition_contains_entry_of_type.json    A/501.tmp.json  
     A/502_get_ehrs_by_contains_composition_contains_entry_of_type.json    A/502.tmp.json
@@ -138,7 +139,7 @@ A-500 Execute Ad-Hoc Query - Get EHRs Which Have Compositions
 
 A-600 Execute Ad-Hoc Query - Get EHRs Which Have Compositions
     [Template]          execute ad-hoc query and check result (loaded DB)
-    [Tags]              
+    [Tags]
     A/600_get_ehrs_by_contains_composition_contains_entry_with_archetype.json    A/600.tmp.json
     A/601_get_ehrs_by_contains_composition_contains_entry_with_archetype.json    A/601.tmp.json
     A/602_get_ehrs_by_contains_composition_contains_entry_with_archetype.json    A/602.tmp.json
@@ -312,17 +313,19 @@ D-304 Execute Ad-HOc Query - Get Data
     D/304_select_data_values_from_all_ehrs_contains_composition_with_archetype.json    D/304.tmp.json
 
 
+# https://jira-1931
 D-306 Execute Ad-HOc Query - Get Data
     [Documentation]     Get Data related query.
     [Template]          execute ad-hoc query and check result (loaded DB)
-    [Tags]              
+    [Tags]      our_implementation_false
     D/306_select_data_values_from_all_ehrs_contains_composition_with_archetype.json    D/306.tmp.json
 
 
+# https://jira-1931
 D-307 Execute Ad-HOc Query - Get Data
     [Documentation]     Get Data related query.
     [Template]          execute ad-hoc query and check result (loaded DB)
-    [Tags]              
+    [Tags]      our_implementation_false
     D/307_select_data_values_from_all_ehrs_contains_composition_with_archetype.json    D/307.tmp.json
 
 

@@ -25,6 +25,8 @@ Force Tags
 *** Test Cases ***
 Alternative flow 3: has path on non-existent EHR
 
+    [Tags]
+
     create fake EHR
 
     get FOLDER in DIRECTORY at version - fake version_uid/path (JSON)

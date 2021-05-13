@@ -43,7 +43,10 @@ Force Tags
 
 
 *** Test Cases ***
+#https://jira-1989
 Alternative flow 3: get CONTRIBUTION on an EHR with CONTRIBUTIONS, by wrong CONTRIBUTION uid
+
+    [Tags]  our_implementation_false
 
     upload OPT    minimal/minimal_evaluation.opt
 

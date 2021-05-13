@@ -46,7 +46,10 @@ Force Tags    refactor
 
 
 *** Test Cases ***
+#https://jira-1989
 Main flow: successfully commit CONTRIBUTION with single valid VERSION<EHR_STATUS> to modify
+
+    [Tags]  our_implementation_false
 
     create EHR
     # comment: get version uid of status from create EHR and set it to variable which is access in KW below

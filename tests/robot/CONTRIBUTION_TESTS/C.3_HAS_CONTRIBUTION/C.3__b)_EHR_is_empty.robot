@@ -45,6 +45,8 @@ Force Tags    refactor
 *** Test Cases ***
 Alternative flow 1: has CONTRIBUTION on empty EHR
 
+    [Tags]
+
     create EHR
 
     retrieve CONTRIBUTION by fake contri_uid (JSON)

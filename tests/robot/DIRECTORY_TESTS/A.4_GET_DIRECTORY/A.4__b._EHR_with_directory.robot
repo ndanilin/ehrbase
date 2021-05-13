@@ -24,6 +24,7 @@ Force Tags
 
 *** Test Cases ***
 Alternative flow 1: get directory on EHR with just a root directory
+    [Tags]
 
     create EHR
     create DIRECTORY (JSON)    empty_directory.json

@@ -24,6 +24,7 @@ Force Tags    refactor
 
 *** Test Cases ***
 Main flow: has directory from existent and empty EHR
+    [Tags]
 
     create EHR
 

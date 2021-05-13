@@ -54,7 +54,7 @@ Force Tags      COMPOSITION_get_versioned
     create EHR and commit a composition for versioned composition tests
 
     # comment: set the query parameter to current data and format as openEHR REST spec conformant timestamp
-    ${date} = 	Get Current Date    result_format=%Y-%m-%dT%H:%M:%S.%f
+    ${date} = 	Get Current Date    result_format=%Y-%m-%dT%H:%M:%S.%f   time_zone=UTC   increment=3 hours
     Set Test Variable 	&{query} 	version_at_time=${date}     # set query as dictionary
 
     get version of versioned composition of EHR by UID and time    ${versioned_object_uid}
@@ -85,7 +85,7 @@ Force Tags      COMPOSITION_get_versioned
     # comment: 2. check if current time returns latest version too
     Log    GET VERSIONED COMPOSITION (LATEST - BY CURRENT TIME)
     # comment: set the query parameter to current date/time and format as openEHR REST spec conformant timestamp
-    ${current_time} =    Get Current Date    result_format=%Y-%m-%dT%H:%M:%S.%f
+    ${current_time} =    Get Current Date    result_format=%Y-%m-%dT%H:%M:%S.%f   time_zone=UTC   increment=3 hours
     Set Test Variable 	&{query} 	version_at_time=${current_time}     # set query as dictionary
     get version of versioned composition of EHR by UID and time    ${versioned_object_uid}
     Should Be Equal As Strings    ${response.status}    200
@@ -169,7 +169,7 @@ Force Tags      COMPOSITION_get_versioned
     create EHR and commit a composition for versioned composition tests
 
     # comment: set the query parameter to current data in openEHR REST spec conformant timestamp
-    ${date} = 	Get Current Date    result_format=%Y-%m-%dT%H:%M:%S.%f
+    ${date} = 	Get Current Date    result_format=%Y-%m-%dT%H:%M:%S.%f   time_zone=UTC   increment=3 hours
     Set Test Variable 	&{query} 	version_at_time=${date}     # set query as dictionary
 
     get version of versioned composition of EHR by UID and time    ${versioned_object_uid}

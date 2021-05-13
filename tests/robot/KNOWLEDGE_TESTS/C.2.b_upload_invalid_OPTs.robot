@@ -55,13 +55,13 @@ Empty File
     empty_file/empty_xml.opt
     empty_file/empty_xml_template.opt
 
-
+##https://jira-1849
 Removed Mandatory Elements
     [Documentation]     Issues with missing elements.
     ...                 Mandatory, optional or combination of it.
     ...                 Elements without minOccurs or MaxOccurs are mandatory
     [Template]          upload invalid OPT
-    [Tags]
+    [Tags]      our_implementation_false
 
     removed_mandatory_elements/minimal_action_removed_concept.opt
     removed_mandatory_elements/minimal_action_removed_concept_value.opt

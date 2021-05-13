@@ -51,8 +51,9 @@ Force Tags    refactor
 
 
 *** Test Cases ***
+#https://jira-1989
 Alternative flow 8: commit CONTRIBUTIONS for versioning a persistent COMPOSITION, but second commit has change type creation
-    [Tags]              72
+    [Tags]              72    our_implementation_false
 
     upload OPT    minimal_persistent/persistent_minimal.opt
 

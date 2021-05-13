@@ -26,8 +26,9 @@ Force Tags
 
 
 *** Test Cases ***
+
 Alternative flow 3 get COMPOSITION at time, on non-existent EHR
-    [Tags]     
+    [Tags]
 
     upload OPT    minimal/minimal_observation.opt
     generate random ehr_id

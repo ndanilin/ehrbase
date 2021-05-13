@@ -26,9 +26,12 @@ Force Tags
 
 
 *** Test Cases ***
+
+# https://jira-1799
 Alternative flow 3 create new invalid event COMPOSITION
+    [Tags]    our_implementation_true
 
     upload OPT    nested/nested.opt
     create EHR
-    commit invalid composition (JSON)    nested/nested.composition.extdatetimes.invalid.xml
+    commit invalid composition 422 (JSON)    nested/nested.composition.extdatetimes.invalid.xml
     [Teardown]    restart SUT

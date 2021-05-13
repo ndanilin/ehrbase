@@ -24,7 +24,7 @@ Force Tags
 
 *** Test Cases ***
 Alternative flow 1: get directory at time on empty EHR with empty time
-    [Tags]              
+    [Tags]
 
     create EHR
     get DIRECTORY at time (JSON)    ${EMPTY}

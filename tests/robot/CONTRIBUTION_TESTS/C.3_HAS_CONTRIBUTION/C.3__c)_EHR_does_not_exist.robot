@@ -45,6 +45,8 @@ Force Tags    refactor
 *** Test Cases ***
 Alternative flow 2 has CONTRIBUTION EHR doesnt exists
 
+    [Tags]
+
     retrieve CONTRIBUTION by fake ehr_id & contri_uid (JSON)
 
     check response: is negative indicating non-existent ehr_id

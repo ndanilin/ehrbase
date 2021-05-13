@@ -27,7 +27,7 @@ Force Tags
 
 *** Test Cases ***
 Alternative flow 5 create new event COMPOSITION referenced opt doesnt exist
-
+    [Tags]
     create EHR
 
     prepare new request session    XML   Prefer=return=representation

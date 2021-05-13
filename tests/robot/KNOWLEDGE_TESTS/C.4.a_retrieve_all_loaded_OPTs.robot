@@ -42,6 +42,7 @@ Resource        ${CURDIR}${/}../_resources/suite_settings.robot
 # Suite Setup  startup OPT SUT
 Suite Teardown  Delete All Templates
 
+# @ndanilin: we don't have opportunity to drop data now
 Force Tags   OPT14    OPT14_retrieve    refactor
 
 
@@ -69,9 +70,9 @@ Establish Preconditions: load valid OPTs into SUT
     versioned/Test versioned v1.opt
     versioned/Test versioned v2.opt
 
-
 Retrieve OPT List From Server
     [Documentation]    ...
+    [Tags]
 
     retrieve list of uploaded OPTs
     verify server response

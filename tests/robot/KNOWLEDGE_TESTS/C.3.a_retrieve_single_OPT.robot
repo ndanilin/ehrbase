@@ -47,7 +47,6 @@ Force Tags   OPT14    OPT14_retrieve
 
 
 *** Test Cases ***
-
 Establish Preconditions: load valid OPTs into SUT
     [Template]         upload valid OPT
     [Documentation]    SUT == System Under Test
@@ -69,15 +68,18 @@ Establish Preconditions: load valid OPTs into SUT
     versioned/Test versioned v1.opt
     versioned/Test versioned v2.opt
 
-
+#https://jira-1851
 All Types
     [Documentation]    ...
+    [Tags]  our_implementation_false
     [Template]         retrieve single OPT
 
     all_types/Test_all_types.opt
 
+#https://jira-1851
 Minimal
     [Documentation]    ...
+    [Tags]  our_implementation_false
     [Template]         retrieve single OPT
 
     minimal/minimal_action.opt
@@ -86,9 +88,10 @@ Minimal
     minimal/minimal_instruction.opt
     minimal/minimal_observation.opt
 
-
+#https://jira-1851
 Minimal Entry Combination
     [Documentation]    ...
+    [Tags]  our_implementation_false
     [Template]         retrieve single OPT
 
     minimal_entry_combination/obs_act.opt
@@ -96,25 +99,28 @@ Minimal Entry Combination
     minimal_entry_combination/obs_eva.opt
     minimal_entry_combination/obs_inst.opt
 
-
+#https://jira-1851
 Minimal Persistent
     [Documentation]    ...
+    [Tags]  our_implementation_false
     [Template]         retrieve single OPT
 
     minimal_persistent/persistent_minimal_all_entries.opt
     minimal_persistent/persistent_minimal_2.opt
     minimal_persistent/persistent_minimal.opt
 
-
+#https://jira-1851
 Nested
     [Documentation]    ...
+    [Tags]  our_implementation_false
     [Template]         retrieve single OPT
 
     nested/nested.opt
 
-
+#https://jira-1851
 Versioned
     [Documentation]    ...
+    [Tags]  our_implementation_false
     [Template]         retrieve single OPT
 
     versioned/Test versioned v1.opt

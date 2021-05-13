@@ -40,14 +40,16 @@ Resource        ${CURDIR}${/}../_resources/suite_settings.robot
 # Suite Setup  startup OPT SUT
 Suite Teardown  Delete All Templates
 
+# @ndanilin: we don't have opportunity to drop data now
 Force Tags   OPT14    OPT14_retrieve
 
-
+#need_to_test_on_empty_tenant
 
 *** Test Cases ***
 
 Retrieve OPT List From Empty Server
     [Documentation]    ...
+    [Tags]
 
     invoke the retrieve OPTs service
     verify server response

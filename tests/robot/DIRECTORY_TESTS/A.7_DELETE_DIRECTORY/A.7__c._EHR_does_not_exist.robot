@@ -24,6 +24,7 @@ Force Tags
 
 *** Test Cases ***
 Alternative flow 2: delete directory from non-existent EHR
+    [Tags]
 
     create fake EHR
 

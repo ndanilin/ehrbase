@@ -28,6 +28,7 @@ Force Tags    refactor
 
 *** Test Cases ***
 Alternative flow 1: has directory from existent EHR that has two versions of directory
+    [Tags]
 
     create EHR
     create DIRECTORY (JSON)    subfolders_in_directory.json

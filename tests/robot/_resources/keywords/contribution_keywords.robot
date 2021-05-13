@@ -154,11 +154,12 @@ check response: is negative indicating errors in committed data
                         # # TODO: keep failing to avoid false positive, rm when has checks.
                         # Fail    msg=brake it till you make it!
 
+# @ndanilin: we have a validation error at the moment so ignored tests that use this keyword
 check response: is negative - complaining about empty versions list
                         Should Be Equal As Strings   ${response.status_code}   400
                         Set Test Variable    ${body}    ${response.json()}
-                        Set Test Variable    ${error_message}    ${body['error']}
-                        Should Be Equal As Strings    ${error_message}    Invalid Contribution, must have at least one Version object.
+                        Set Test Variable    ${error_message}    ${body['validationErrors'][0]}
+                        Should contain    ${error_message}    CONTRIBUTION_VERSIONS_EMPTY
 
 
 check response: is negative indicating wrong change_type

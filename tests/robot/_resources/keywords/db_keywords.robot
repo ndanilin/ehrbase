@@ -100,6 +100,10 @@ Delete All Compositions
     ...                 Is expected to be used with EHRbase server started with disabled Cache
     ...                 e.g. `java -jar ehrbase-server.jar --cache.enabled=false`
 
+            # comment:  create new tenant if 'control mode' is NEW_TENANT
+                        Run Keyword And Return If   "${CONTROL_MODE}"=="NEW_TENANT"
+                          ...    prepare tenant and user
+
             # comment:  exit if 'control mode' is NONE
                         Return From Keyword If    "${CONTROL_MODE}"=="NONE"
                         ...    No DB connection required!
@@ -120,6 +124,11 @@ Delete All Templates
     ...                 Is expected to be used with EHRbase server started with disabled Cache
     ...                 e.g. `java -jar ehrbase-server.jar --cache.enabled=false`
 
+
+            # comment:  create new tenant if 'control mode' is NEW_TENANT
+                        Run Keyword And Return If   "${CONTROL_MODE}"=="NEW_TENANT"
+                          ...    prepare tenant and user
+
             # comment:  exit if 'control mode' is NONE
                         Return From Keyword If    "${CONTROL_MODE}"=="NONE"
                         ...    No DB connection required!
@@ -138,6 +147,10 @@ Delete All EHR Records
     [Documentation]     Deletes all EHR records from ehr.ehr table.
     ...                 Is expected to be used with EHRbase server started with disabled Cache
     ...                 e.g. `java -jar ehrbase-server.jar --cache.enabled=false`
+
+            # comment:  create new tenant if 'control mode' is NEW_TENANT
+                        Run Keyword And Return If   "${CONTROL_MODE}"=="NEW_TENANT"
+                          ...    prepare tenant and user
 
             # comment:  exit if 'control mode' is NONE
                         Return From Keyword If    "${CONTROL_MODE}"=="NONE"

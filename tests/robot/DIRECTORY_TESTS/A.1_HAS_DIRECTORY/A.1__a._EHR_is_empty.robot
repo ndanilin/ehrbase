@@ -25,6 +25,8 @@ Force Tags
 *** Test Cases ***
 Main flow: has directory on empty existing EHR
 
+    [Tags]
+
     create EHR
 
     get DIRECTORY (JSON)

@@ -57,6 +57,7 @@ EXPECTED:   server responds with status code 409
 
 All Types
     [Documentation]    ...
+    [Tags]
     [Template]         upload valid OPT twice with conflict
 
     all_types/Test_all_types.opt
@@ -64,6 +65,7 @@ All Types
 
 Minimal
     [Documentation]    ...
+    [Tags]
     [Template]         upload valid OPT twice with conflict
 
     minimal/minimal_action.opt
@@ -75,6 +77,7 @@ Minimal
 
 Minimal Entry Combination
     [Documentation]    ...
+    [Tags]
     [Template]         upload valid OPT twice with conflict
 
     minimal_entry_combination/obs_act.opt
@@ -85,6 +88,7 @@ Minimal Entry Combination
 
 Minimal Persistent
     [Documentation]    ...
+    [Tags]
     [Template]         upload valid OPT twice with conflict
 
     minimal_persistent/persistent_minimal_all_entries.opt
@@ -94,6 +98,7 @@ Minimal Persistent
 
 Nested
     [Documentation]    ...
+    [Tags]
     [Template]         upload valid OPT twice with conflict
 
     nested/nested.opt
@@ -101,6 +106,7 @@ Nested
 
 Versioned
     [Documentation]    ...
+    [Tags]
     [Template]         upload valid OPT twice with conflict
 
     versioned/Test versioned v1.opt

@@ -34,7 +34,8 @@ Resource        ${CURDIR}${/}../../_resources/suite_settings.robot
 Suite Setup  Establish Preconditions for Scenario: EMPTY DB
 # Test Teardown  restore clean SUT state
 
-Force Tags    refactor    AQL_empty_db
+# https://jira-1856    https://jira-1857    https://jira-1858    https://jira-1853
+Force Tags    refactor    AQL_empty_db  our_implementation_false
 
 
 
@@ -48,6 +49,7 @@ Force Tags    refactor    AQL_empty_db
 A-100 Execute Ad-Hoc Query - Get EHR(s)
     [Template]          execute ad-hoc query and check result (empty DB)
     [Tags]
+
     A/100_get_ehrs.json
     A/102_get_ehrs.json
     A/104_get_ehrs.json

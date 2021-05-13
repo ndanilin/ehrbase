@@ -24,6 +24,7 @@ Force Tags
 
 *** Test Cases ***
 Alternative flow 1: delete directory from EHR with directory
+    [Tags]
 
     create EHR
 

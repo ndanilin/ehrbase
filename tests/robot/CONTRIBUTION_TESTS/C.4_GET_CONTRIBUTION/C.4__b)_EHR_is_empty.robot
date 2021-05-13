@@ -45,6 +45,8 @@ Force Tags
 *** Test Cases ***
 Alternative flow 1: get CONTRIBUTION on an empty EHR
 
+    [Tags]
+
     create EHR
 
     create fake CONTRIBUTION
