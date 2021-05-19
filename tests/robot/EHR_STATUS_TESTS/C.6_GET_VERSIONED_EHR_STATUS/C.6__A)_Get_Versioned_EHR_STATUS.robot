@@ -77,7 +77,7 @@ Force Tags
 
     prepare new request session    JSON    Prefer=return=representation
 
-    Set Test Variable    ${ehr_id}    foobar
+    Set Test Variable    ${ehr_id}    11111111-ABCD-ABCD-ABCD-111111111111
 
     get versioned ehr_status of EHR
     Should Be Equal As Strings    ${response.status}    404

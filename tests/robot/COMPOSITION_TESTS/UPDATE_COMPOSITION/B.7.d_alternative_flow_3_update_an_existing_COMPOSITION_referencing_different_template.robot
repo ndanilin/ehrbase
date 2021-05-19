@@ -27,7 +27,7 @@ Force Tags
 
 *** Test Cases ***
 Alternative flow 3 update an existing persistent COMPOSITION referencing different template
-    [Tags]    our_implementation_true
+    [Tags]    our_implementation_true   our_implementation_false   our_bug_2042
     # comment: Upload multiple OPTs
     upload OPT    minimal_persistent/persistent_minimal.opt
     upload OPT    minimal_persistent/persistent_minimal_2.opt

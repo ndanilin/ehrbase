@@ -83,7 +83,7 @@ Force Tags      COMPOSITION_get_versioned
 
     create EHR and commit a composition for versioned composition tests
 
-    Set Test Variable    ${ehr_id}    foobar
+    Set Test Variable    ${ehr_id}    11111111-ABCD-ABCD-ABCD-111111111111
 
     get versioned composition of EHR by UID    ${versioned_object_uid}
     Should Be Equal As Strings    ${response.status}    404
