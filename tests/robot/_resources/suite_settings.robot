@@ -57,7 +57,7 @@ ${PROJECT_ROOT}          ${EXECDIR}${/}..
 ${POM_FILE}              ${PROJECT_ROOT}${/}pom.xml
 ${SMOKE_TEST_PASSED}     ${TRUE}
 
-${SUT}                   TEST    # Switch System Under Test (SUT). Check tests/README.md for details.
+${SUT}                   EHRSCAPE    # Switch System Under Test (SUT). Check tests/README.md for details.
 ${CODE_COVERAGE}         False
 ${NODOCKER}              False
 ${AUTH_TYPE}             BASIC
