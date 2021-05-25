@@ -60,5 +60,6 @@ Alternative flow 6 create new persistent COMPOSITION EHR doesnt exist STRUCTURED
 
 *** Keywords ***
 Precondition
+    upload OPT    nested/nested.opt
     upload OPT    minimal_persistent/persistent_minimal.opt
     create fake EHR
