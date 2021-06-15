@@ -19,16 +19,19 @@ Main flow create new event COMPOSITION RAW_XML
     check the successfull result of commit compostion
 
 Main flow create new event COMPOSITION FLAT
+    [Tags]   our_implementation_false   EHRDB-2105
     commit composition   format=FLAT
     ...                  composition=nested.en.v1__full.json
     check the successfull result of commit compostion   nesting
 
 Main flow create new event COMPOSITION TDD
+    [Tags]   our_implementation_false   EHRDB-2105
     commit composition   format=TDD
     ...                  composition=nested.en.v1__full.xml
     check the successfull result of commit compostion
 
 Main flow create new event COMPOSITION STRUCTURED
+    [Tags]   our_implementation_false   EHRDB-2105
     commit composition   format=STRUCTURED
     ...                  composition=nested.en.v1__full.json
     check the successfull result of commit compostion   nesting
